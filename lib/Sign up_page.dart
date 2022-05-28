@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_reddit/Login_Page.dart';
 
 class Sign_in extends StatelessWidget {
   const Sign_in({Key? key}) : super(key: key);
@@ -54,7 +55,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(10),
-                child: const Text(
+                child:
+                const Text(
                   'Create your account',
                   style: TextStyle(fontSize: 20,color: Colors.white),
                 )),
@@ -137,6 +139,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     style: TextStyle(fontSize: 20),
                   ),
                   onPressed: () {
+                    print("alana");
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=> Login_page()));
                     //signup screen
                   },
                 )

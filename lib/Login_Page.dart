@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_reddit/Sign%20up_page.dart';
 
 class Login_page extends StatelessWidget {
   const Login_page({Key? key}) : super(key: key);
@@ -111,6 +112,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     style: TextStyle(fontSize: 20),
                   ),
                   onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Sign_in()));
                     //signup screen
                   },
                 )

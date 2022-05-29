@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_reddit/Add_Post.dart';
+import 'package:flutter_reddit/Add_Society.dart';
 import 'package:flutter_reddit/Setting_page.dart';
 import 'package:flutter_reddit/Sign%20up_page.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       title: 'Reddit',
-      home:Sign_in()
+      home:Setting_page()
     );
   }
 }

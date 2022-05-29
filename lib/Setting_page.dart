@@ -1,43 +1,62 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_reddit/Login_Page.dart';
+
 
 class Setting_page extends StatelessWidget {
   const Setting_page({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      backgroundColor: Colors.black,
+    return Scaffold(
+      backgroundColor: Colors.purple,
       appBar: AppBar(
         centerTitle: true,
-        title: SizedBox(height: 45.0,
-            child: Image.asset("asset/images/reddit.png")
+        backgroundColor: Colors.black,
+        title: SizedBox(
+          height: 45.0,
+          child: Image.asset("asset/images/reddit.png"),
         ),
-        backgroundColor: Colors.black,),
-      body: const MyStatefulWidget(),
+      ),
+      body: SettingStateful(),
     );
   }
 }
 
 
-
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({Key? key}) : super(key: key);
+class SettingStateful extends StatefulWidget {
+  const SettingStateful({Key? key}) : super(key: key);
 
   @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidget();
+  State<SettingStateful> createState() => _SettingStatefulState();
 }
 
-
-class _MyStatefulWidget extends State<MyStatefulWidget>{
+class _SettingStatefulState extends State<SettingStateful> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("salam"),
+    return Padding(
+        padding: const EdgeInsets.all(0),
+      child: Container(
+        height: 50,
+        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+        child: ElevatedButton.icon(
+          icon:Icon(Icons.home) ,
+          style: ElevatedButton.styleFrom(minimumSize: const Size(450, 20),),
+          label:const Text('alann                                                                                                                          ',textAlign: TextAlign.left,),
+
+          onPressed: (){
+          },
+
+        ),
+      ),
     );
-
   }
-
 }
+
+
+
+
+
+
 
 

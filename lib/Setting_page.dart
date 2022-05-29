@@ -9,7 +9,7 @@ class Setting_page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.purple,
+      backgroundColor: Colors.black,
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.black,
@@ -40,13 +40,14 @@ class _SettingStatefulState extends State<SettingStateful> {
         height: 50,
         padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
         child: ElevatedButton.icon(
-          icon:Icon(Icons.home) ,
-          style: ElevatedButton.styleFrom(minimumSize: const Size(450, 20),),
-          label:const Text('alann                                                                                                                          ',textAlign: TextAlign.left,),
-
+          icon:Icon(Icons.home,
+            color: Colors.white,
+          ) ,
+          style: ElevatedButton.styleFrom(minimumSize: const Size(450, 20),primary: Colors.black,onPrimary: Colors.purple),
+          label:const Text('alann                                                                                                                          ',style: TextStyle(color: Colors.white),),
           onPressed: (){
-          },
 
+          },
         ),
       ),
     );

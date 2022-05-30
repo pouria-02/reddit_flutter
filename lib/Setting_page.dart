@@ -36,20 +36,38 @@ class _SettingStatefulState extends State<SettingStateful> {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(0),
-      child: Container(
-        height: 50,
-        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-        child: ElevatedButton.icon(
-          icon:Icon(Icons.home,
-            color: Colors.white,
-          ) ,
-          style: ElevatedButton.styleFrom(minimumSize: const Size(450, 20),primary: Colors.black,onPrimary: Colors.purple),
-          label:const Text('alann                                                                                                                          ',style: TextStyle(color: Colors.white),),
-          onPressed: (){
+      child:
+      ListView(
+        children: <Widget>[
+          Container(
+            height: 50,
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+            child: ElevatedButton.icon(
+              icon:Icon(Icons.account_box,
+                color: Colors.white,
+              ) ,
+              style: ElevatedButton.styleFrom(minimumSize: const Size(450, 20),primary: Colors.black,onPrimary: Colors.purple),
+              label:const Text('profile                                                                                                                          ',style: TextStyle(color: Colors.white),),
+              onPressed: (){
 
-          },
-        ),
-      ),
+              },
+            ),
+          ),
+          Container(
+            height: 50,
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+            child: ElevatedButton.icon(
+                onPressed: (){},
+                icon: Icon(
+                    Icons.add,
+                    color: Colors.white,
+                ),
+                style: ElevatedButton.styleFrom(minimumSize: const Size(450, 20),primary:Colors.black,onPrimary: Colors.purple),
+                label: const Text("Add society                                                                                                                     ",style: TextStyle(color: Colors.white),),
+
+          ),
+          )],
+      )
     );
   }
 }

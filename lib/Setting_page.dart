@@ -78,7 +78,19 @@ class _SettingStatefulState extends State<SettingStateful> {
               ),
               style: ElevatedButton.styleFrom(minimumSize: const Size(450, 20),primary: Colors.black,onPrimary: Colors.purple),
               label: const Text("About us                                                                                                               ",style:TextStyle(color: Colors.white),)),
-        )
+        ),
+          Container(
+            height: 50,
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+            child: ElevatedButton.icon(
+                onPressed: (){},
+                icon: Icon(Icons.bookmark,
+                color: Colors.white,
+                ),
+                style: ElevatedButton.styleFrom(minimumSize: const Size(450, 20),primary: Colors.black,onPrimary: Colors.purple),
+                label: const Text("Saved post                                                                                                             ",style: TextStyle(color: Colors.white),),
+          )
+          )
         ],
       )
     );

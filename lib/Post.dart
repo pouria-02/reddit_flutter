@@ -5,6 +5,9 @@ class Post {
   DateTime dateTime = DateTime.now();
   late int LikeCount ;
   late int DisLikeCount;
+  //List<>
+  String get GetsocietyName => societyName;
+  String get GetDescription => description;
   int get likes => LikeCount ;
   int get dislikes => DisLikeCount ;
   void setlikes (){
@@ -16,6 +19,6 @@ class Post {
   set setDescription (String s ){
     description = s ;
   }
-  String get Description => description;
+
 
 }

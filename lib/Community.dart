@@ -36,4 +36,7 @@ class Community {
   set setCommunityDescription(String s){
     communityDescription = s;
   }
+  set SetProfileCommunity(Object o){
+    profileCommunity = o ;
+  }
 }

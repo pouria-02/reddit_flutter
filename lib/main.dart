@@ -2,9 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_reddit/Add%20community_page.dart';
-import 'package:flutter_reddit/Add%20society_page.dart';
+import 'package:flutter_reddit/Add%20community_page.dart';
 import 'package:flutter_reddit/Add_Post.dart';
-import 'package:flutter_reddit/Add_Society.dart';
+import 'package:flutter_reddit/Add community_page.dart';
 import 'package:flutter_reddit/Setting_page.dart';
 import 'package:flutter_reddit/Sign%20up_page.dart';
 

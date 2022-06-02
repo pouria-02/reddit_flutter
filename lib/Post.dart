@@ -1,4 +1,4 @@
-import 'package:flutter_reddit/Comment.dart';
+/*import 'package:flutter_reddit/Comment.dart';
 
 class Post {
   late String communityName;
@@ -23,7 +23,7 @@ class Post {
   set setDescription (String s ){
     description = s ;
   }
-  /*void setCommentOfPost (Comment c){
+  void setCommentOfPost (Comment c){
     commentOfPost.add(c);
-  }*/
-}
+  }
+}*/

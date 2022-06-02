@@ -1,4 +1,7 @@
 
+import 'Comment.dart';
+import 'Post.dart';
+
 class PostDetails  {
     late String societyNameD;
     late String userName;
@@ -9,9 +12,6 @@ class PostDetails  {
     late int commentCounter;
     late int commentLikeCounter;
     late int commentDisLikeCounter;
-
-    //comment list
-    // adding comment
     String get getSocietyNameD => societyNameD;
     String get getuserName => userName;
     String get getDiscriptionDetail => descriptionD;
@@ -35,4 +35,5 @@ class PostDetails  {
     void setCommentDisLikeCounter (){
         commentDisLikeCounter++;
     }
+// adding comment function is in class post
 }

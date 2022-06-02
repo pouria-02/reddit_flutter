@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-class Add_society extends StatelessWidget {
-  const Add_society({Key? key}) : super(key: key);
+class Add_Community extends StatelessWidget {
+  const Add_Community({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,20 +13,20 @@ class Add_society extends StatelessWidget {
         ),
         backgroundColor: Colors.black,
       ),
-      body:const Add_Society_stateful() ,
+      body:const Add_Community_stateful() ,
     );
   }
 }
 
-class Add_Society_stateful extends StatefulWidget {
-  const Add_Society_stateful({Key? key}) : super(key: key);
+class Add_Community_stateful extends StatefulWidget {
+  const Add_Community_stateful({Key? key}) : super(key: key);
 
   @override
-  State<Add_Society_stateful> createState() => _Add_Society_statefulState();
+  State<Add_Community_stateful> createState() => _Add_Community_statefulState();
 }
 
-class _Add_Society_statefulState extends State<Add_Society_stateful> {
-  TextEditingController society_name=TextEditingController();
+class _Add_Community_statefulState extends State<Add_Community_stateful> {
+  TextEditingController community_name=TextEditingController();
   TextEditingController username=TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class _Add_Society_statefulState extends State<Add_Society_stateful> {
             alignment: Alignment.center,
             padding: const EdgeInsets.all(1),
             child: const Text(
-              'Add society',
+              'Add community',
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w500,
@@ -51,11 +51,11 @@ class _Add_Society_statefulState extends State<Add_Society_stateful> {
             child: TextField(
               style: TextStyle(color: Colors.white),
               cursorColor: Colors.white,
-              controller: society_name,
+              controller: community_name,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.purple)),
-                labelText: 'Society name',
+                labelText: 'Community name',
                 labelStyle: TextStyle(color: Colors.white)
               ),
             ),
@@ -64,9 +64,9 @@ class _Add_Society_statefulState extends State<Add_Society_stateful> {
             height: 50,
             padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: ElevatedButton(
-              child: const Text('Add society'),
+              child: const Text('Add community'),
               onPressed: (){
-                print(society_name);
+                print(community_name);
               },
             ),
           )

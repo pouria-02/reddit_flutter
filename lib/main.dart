@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_reddit/Add%20community_page.dart';
 import 'package:flutter_reddit/Add%20society_page.dart';
 import 'package:flutter_reddit/Add_Post.dart';
 import 'package:flutter_reddit/Add_Society.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       title: 'Reddit',
-      home:Add_society(),
+      home:Add_Community(),
     );
   }
 }

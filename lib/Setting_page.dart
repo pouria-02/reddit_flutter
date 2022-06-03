@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_reddit/Add%20community_page.dart';
 import 'package:flutter_reddit/Login_Page.dart';
+import 'package:flutter_reddit/Profile_page.dart';
 
 
 class Setting_page extends StatelessWidget {
@@ -49,7 +51,7 @@ class _SettingStatefulState extends State<SettingStateful> {
               style: ElevatedButton.styleFrom(minimumSize: const Size(450, 20),primary: Colors.black,onPrimary: Colors.purple),
               label:const Text('profile                                                                                                                          ',style: TextStyle(color: Colors.white),),
               onPressed: (){
-
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Profile_page(users: [],)));
               },
             ),
           ),
@@ -57,13 +59,15 @@ class _SettingStatefulState extends State<SettingStateful> {
             height: 50,
             padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
             child: ElevatedButton.icon(
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Add_Community()));
+                },
                 icon: Icon(
                     Icons.add,
                     color: Colors.white,
                 ),
                 style: ElevatedButton.styleFrom(minimumSize: const Size(450, 20),primary:Colors.black,onPrimary: Colors.purple),
-                label: const Text("Add society                                                                                                         ",style: TextStyle(color: Colors.white),),
+                label: const Text("Add community                                                                                                         ",style: TextStyle(color: Colors.white),),
 
           ),
           ),

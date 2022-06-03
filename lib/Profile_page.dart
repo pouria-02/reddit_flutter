@@ -3,6 +3,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_reddit/Change_email.dart';
+import 'package:flutter_reddit/Change_password.dart';
+import 'package:flutter_reddit/Change_username.dart';
 import 'package:flutter_reddit/Post.dart';
 
 import 'User.dart';
@@ -69,7 +71,9 @@ class _Profile_statefulState extends State<Profile_stateful> {
           ],
         ),
             TextButton(
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Change_username()));
+                },
                 child: const Text("Change username")
             ),
             TextButton(
@@ -79,7 +83,9 @@ class _Profile_statefulState extends State<Profile_stateful> {
                 child: const Text("Change email")
             ),
             TextButton(
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Change_password()));
+                },
                 child: const Text("Change password")
             )
       ],

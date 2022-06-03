@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_reddit/Setting_page.dart';
 
 class Feed_page extends StatelessWidget {
   const Feed_page({Key? key}) : super(key: key);
@@ -8,6 +9,17 @@ class Feed_page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>Setting_page()));
+              },
+              icon: Icon(
+                  Icons.settings,
+                color: Colors.white,
+              )
+          )
+        ],
         centerTitle: true,
         title: SizedBox(height: 45.0,
         child: Image.asset("asset/images/reddit.png"),

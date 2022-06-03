@@ -78,7 +78,9 @@ class _Change_email_statefulState extends State<Change_email_stateful> {
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: ElevatedButton(
                 child: const Text("Change your email"),
-                onPressed: (){},
+                onPressed: (){
+                  print("salma");
+                },
               ),
             )
           ],

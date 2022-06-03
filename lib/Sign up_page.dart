@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_reddit/Feed_page.dart';
 import 'package:flutter_reddit/Login_Page.dart';
 
 class Sign_in extends StatelessWidget {
@@ -34,6 +35,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   TextEditingController nameController = TextEditingController();
   TextEditingController gmailcontroller=TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -123,8 +126,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 child: ElevatedButton(
                   child: const Text('Sign up'),
                   onPressed: () {
-                    print(nameController.text);
-                    print(passwordController.text);
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Feed_page()));
+
                   },
                 )
             ),

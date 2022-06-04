@@ -1,6 +1,7 @@
-/*import 'package:flutter_reddit/Comment.dart';
+import 'package:flutter_reddit/Comment.dart';
 
 class Post {
+  late int id;
   late String communityName;
   late String  description;
   late String title;
@@ -8,7 +9,7 @@ class Post {
   late int LikeCount ;
   late int DisLikeCount;
   List<Comment> commentOfPost = [];
-  Post({required this.communityName,required this.description,required this.title});
+  Post({required this.id,required this.communityName,required this.description,required this.title});
   String get GetcommunitytyName => communityName;
   String get GetDescription => description;
   int get likes => LikeCount ;
@@ -26,4 +27,4 @@ class Post {
   void setCommentOfPost (Comment c){
     commentOfPost.add(c);
   }
-}*/
+}

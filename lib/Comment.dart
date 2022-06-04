@@ -2,13 +2,14 @@ import 'Post.dart';
 import 'User.dart';
 
 class Comment {
-  late User userOfThisComment;
+  late int id;
+  late int userId;
   late String text;
-  late Post post_comment;
+  late int post_commentId;
   DateTime commentTime = DateTime.now();
   int likes_comment = 0 ;
   int dislike_comment = 0 ;
-  Comment(this.text, this.userOfThisComment, this.post_comment);
+  Comment(this.id,this.text, this.userId,this.post_commentId );
   void setlikes (){
     likes_comment ++;
   }

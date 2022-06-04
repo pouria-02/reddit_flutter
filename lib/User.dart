@@ -2,13 +2,14 @@ import 'Community.dart';
 import 'Post.dart';
 
 class User{
+  int id  ;
   late String userName;
   late String password;
   late Object profile;
   //String? bio;
   late List<Post> postsOfUser;
   List<Community> communitiesOfUser = [];
-  User({  required this.userName,  required this.password,
+  User({  required this.id,required this.userName,  required this.password,
     required this.profile,  required List<Post> PostsOfUser});
   void AddPost(Post p){
     postsOfUser.add(p);

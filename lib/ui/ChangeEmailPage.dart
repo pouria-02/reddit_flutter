@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 
-class Change_email extends StatelessWidget {
-  const Change_email({Key? key}) : super(key: key);
+class ChangeEmailPage extends StatelessWidget {
+  const ChangeEmailPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

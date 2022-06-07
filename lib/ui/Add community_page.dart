@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-class Add_Community extends StatelessWidget {
-  const Add_Community({Key? key}) : super(key: key);
+class AddCommunityPage extends StatelessWidget {
+  const AddCommunityPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reddit/Comment.dart';
 import 'package:flutter_reddit/DataRepository.dart';
-import 'package:flutter_reddit/User.dart';
+import 'package:flutter_reddit/model/Comment.dart';
+import 'package:flutter_reddit/model/User.dart';
 
 class PostDetailPage extends StatefulWidget {
   const PostDetailPage({Key? key}) : super(key: key);
@@ -12,8 +12,9 @@ class PostDetailPage extends StatefulWidget {
 
 class _PostDetailPageState extends State<PostDetailPage> {
   List<User> _list = [];
-  Comment comment = Comment(202,"test", 302, 102);
+  Comment comment = Comment(202, "test", 302, 102);
   TextEditingController testController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     User user = _list.firstWhere((element) => element.id == 100);
@@ -31,16 +32,14 @@ class _PostDetailPageState extends State<PostDetailPage> {
         ),
         actions: [
           IconButton(
-            onPressed: () {
-            },
+            onPressed: () {},
             icon: const Icon(
               Icons.add_alert,
               color: Colors.white,
             ),
           ),
           IconButton(
-            onPressed: () {
-            },
+            onPressed: () {},
             icon: const Icon(
               Icons.menu,
               color: Colors.white,
@@ -52,11 +51,11 @@ class _PostDetailPageState extends State<PostDetailPage> {
         child: Column(
           children: [
             InkWell(
-              onTap: () {
-                // DataRepository.increaseLikeCount(commentId);
-                //DataRepository.
+                onTap: () {
+                  // DataRepository.increaseLikeCount(commentId);
+                  //DataRepository.
                 },
-                child: Text(comment.likes_comment.toString())),
+                child: Text(comment.commentLikesCount.toString())),
             TextFormField(
               controller: testController,
             )

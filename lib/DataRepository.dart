@@ -1,7 +1,6 @@
-import 'package:flutter_reddit/Post.dart';
+import 'package:flutter_reddit/model/Comment.dart';
+import 'package:flutter_reddit/model/Post.dart';
 
-import 'Comment.dart';
-import 'User.dart';
 
 class DataRepository {
   static List<Comment> commentList = [
@@ -21,14 +20,14 @@ class DataRepository {
     Post(id: 106, communityName: "communityName5", description: "description5", title: "title5"),
   ];
 
-  static void createComment(int id,String text, int userId, int  post_commentId) {
-    Comment comment = Comment(id, text, userId, post_commentId);
+  static void createComment(int id,String text, int userId, int  postCommentId) {
+    Comment comment = Comment(id, text, userId, postCommentId);
     commentList.add(comment);
   }
   static void increaseLikeCount(int commentId) {
     Comment currentComment = commentList.firstWhere(
       (element) => element.id == commentId,
     );
-    currentComment.setlikes();
+    currentComment.increaseLikeCount();
   }
 }

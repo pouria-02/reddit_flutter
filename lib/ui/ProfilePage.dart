@@ -2,12 +2,12 @@ import 'dart:ffi';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_reddit/Change_email.dart';
-import 'package:flutter_reddit/Change_password.dart';
-import 'package:flutter_reddit/Change_username.dart';
-import 'package:flutter_reddit/Post.dart';
+import 'package:flutter_reddit/ui/ChangeEmailPage.dart';
+import 'package:flutter_reddit/ui/ChangePasswordPage.dart';
+import 'package:flutter_reddit/ui/ChangeUsernamePage.dart';
+import 'package:flutter_reddit/model/Post.dart';
 
-import 'User.dart';
+import '../model/User.dart';
 
 
 class Profile_page extends StatelessWidget {
@@ -72,19 +72,19 @@ class _Profile_statefulState extends State<Profile_stateful> {
         ),
             TextButton(
                 onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Change_username()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ChangeUsernamePage()));
                 },
                 child: const Text("Change username")
             ),
             TextButton(
                 onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Change_email()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ChangeEmailPage()));
                 },
                 child: const Text("Change email")
             ),
             TextButton(
                 onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Change_password()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ChangePasswordPage()));
                 },
                 child: const Text("Change password")
             )

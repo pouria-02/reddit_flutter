@@ -1,15 +1,13 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_reddit/Add%20community_page.dart';
-import 'package:flutter_reddit/Add%20community_page.dart';
-import 'package:flutter_reddit/Add_Post.dart';
-import 'package:flutter_reddit/Profile_page.dart';
+import 'package:flutter_reddit/ui/Add%20community_page.dart';
+import 'package:flutter_reddit/ui/Add%20community_page.dart';
+import 'package:flutter_reddit/ui/AddPostPage.dart';
+import 'package:flutter_reddit/ui/LoginPage.dart';
+import 'package:flutter_reddit/ui/ProfilePage.dart';
 
-import 'package:flutter_reddit/Setting_page.dart';
-import 'package:flutter_reddit/Sign%20up_page.dart';
 
-import 'Login_Page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -25,7 +23,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       title: 'Reddit',
-      home:Login_page(),
+      home:LoginPage(),
     );
   }
 }

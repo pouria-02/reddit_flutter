@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 
-class Change_username extends StatelessWidget {
-  const Change_username({Key? key}) : super(key: key);
+class ChangePasswordPage extends StatelessWidget {
+  const ChangePasswordPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,21 +16,21 @@ class Change_username extends StatelessWidget {
         ),
         backgroundColor: Colors.black,
       ),
-      body: Change_username_stateful(),
+      body: Change_password_stateful(),
     );
   }
 }
 
-class Change_username_stateful extends StatefulWidget {
-  const Change_username_stateful({Key? key}) : super(key: key);
+class Change_password_stateful extends StatefulWidget {
+  const Change_password_stateful({Key? key}) : super(key: key);
 
   @override
-  State<Change_username_stateful> createState() => _Change_username_statefulState();
+  State<Change_password_stateful> createState() => _Change_password_statefulState();
 }
 
-class _Change_username_statefulState extends State<Change_username_stateful> {
+class _Change_password_statefulState extends State<Change_password_stateful> {
 
-  TextEditingController nameController=TextEditingController();
+  TextEditingController passwordController=TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class _Change_username_statefulState extends State<Change_username_stateful> {
             alignment: Alignment.center,
             padding: const EdgeInsets.all(10),
             child: const Text(
-              'Change username',
+              'Change password',
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w500,
@@ -54,7 +54,7 @@ class _Change_username_statefulState extends State<Change_username_stateful> {
             alignment: Alignment.center,
             padding: const EdgeInsets.all(10),
             child: const Text(
-              'Change your username',
+              'Change your password',
               style: TextStyle(fontSize: 15,color: Colors.white),
             ),
           ),
@@ -64,11 +64,11 @@ class _Change_username_statefulState extends State<Change_username_stateful> {
             child: TextField(
               style: TextStyle(color: Colors.white),
               cursorColor: Colors.white,
-              controller:nameController,
+              controller:passwordController,
               decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.purple)),
-                  labelText: 'Enter your new username',
+                  labelText: 'Enter your new password',
                   labelStyle: TextStyle(color: Colors.white,fontSize: 12.5)
               ),
             ),
@@ -77,7 +77,7 @@ class _Change_username_statefulState extends State<Change_username_stateful> {
             height: 50.0,
             padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: ElevatedButton(
-              child: const Text("Change your username"),
+              child: const Text("Change your password"),
               onPressed: (){
                 print("salma");
               },

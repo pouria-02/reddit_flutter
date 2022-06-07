@@ -1,27 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_reddit/Feed_page.dart';
-import 'package:flutter_reddit/Sign%20up_page.dart';
+import 'package:flutter_reddit/ui/FeedPage.dart';
+import 'package:flutter_reddit/ui/SignupPage.dart';
 
-class Login_page extends StatelessWidget {
-  const Login_page({Key? key}) : super(key: key);
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
         centerTitle: true,
-        title: SizedBox(height: 45.0,
-            child: Image.asset("asset/images/reddit.png")
-        ),
-        backgroundColor: Colors.black,),
+        title: SizedBox(
+            height: 45.0, child: Image.asset("asset/images/reddit.png")),
+        backgroundColor: Colors.black,
+      ),
       body: const MyStatefulWidget(),
     );
   }
 }
-
-
 
 class MyStatefulWidget extends StatefulWidget {
   const MyStatefulWidget({Key? key}) : super(key: key);
@@ -55,7 +53,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 padding: const EdgeInsets.all(10),
                 child: const Text(
                   'Login into your account',
-                  style: TextStyle(fontSize: 20,color: Colors.white),
+                  style: TextStyle(fontSize: 20, color: Colors.white),
                 )),
             Container(
               padding: const EdgeInsets.all(10),
@@ -65,10 +63,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 controller: nameController,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.purple)),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.purple)),
                     labelText: 'Username',
-                    labelStyle: TextStyle(color: Colors.white)
-                ),
+                    labelStyle: TextStyle(color: Colors.white)),
               ),
             ),
             Container(
@@ -80,17 +78,19 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 controller: passwordController,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.purple)),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.purple)),
                     labelText: 'Password',
-                    labelStyle: TextStyle(color: Colors.white)
-                ),
+                    labelStyle: TextStyle(color: Colors.white)),
               ),
             ),
             TextButton(
               onPressed: () {
                 //forgot password screen
               },
-              child: const Text('Forgot Password',),
+              child: const Text(
+                'Forgot Password',
+              ),
             ),
             Container(
                 height: 50,
@@ -98,21 +98,24 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 child: ElevatedButton(
                   child: const Text('Login'),
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Feed_page()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => FeedPage()));
                   },
-                )
-            ),
+                )),
             Row(
               children: <Widget>[
-                const Text('Does not have account?',style: TextStyle(color: Colors.white),),
-
+                const Text(
+                  'Does not have account?',
+                  style: TextStyle(color: Colors.white),
+                ),
                 TextButton(
                   child: const Text(
                     'Sign in',
                     style: TextStyle(fontSize: 20),
                   ),
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Sign_in()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignupPage()));
                     //signup screen
                   },
                 )

@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_reddit/Setting_page.dart';
+import 'package:flutter_reddit/ui/SettingPage.dart';
 
-class Feed_page extends StatelessWidget {
-  const Feed_page({Key? key}) : super(key: key);
+class FeedPage extends StatelessWidget {
+  const FeedPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +11,9 @@ class Feed_page extends StatelessWidget {
         actions: <Widget>[
           IconButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Setting_page()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>SettingPage()));
               },
-              icon: Icon(
+              icon: const Icon(
                   Icons.settings,
                 color: Colors.white,
               )
@@ -26,7 +25,7 @@ class Feed_page extends StatelessWidget {
         ),
         backgroundColor: Colors.black,
       ),
-      body: Feed_stateful(),
+      body: const Feed_stateful(),
     );
   }
 }

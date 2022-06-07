@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_reddit/Feed_page.dart';
-import 'package:flutter_reddit/Login_Page.dart';
+import 'package:flutter_reddit/ui/FeedPage.dart';
+import 'package:flutter_reddit/ui/LoginPage.dart';
 
-class Sign_in extends StatelessWidget {
-  const Sign_in({Key? key}) : super(key: key);
+class SignupPage extends StatelessWidget {
+  const SignupPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +65,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             Container(
               padding: const EdgeInsets.all(10),
               child: TextField(
-                style: TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white),
                 cursorColor: Colors.white,
                 controller: gmailcontroller,
                 decoration: const InputDecoration(
@@ -79,7 +79,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             Container(
               padding: const EdgeInsets.all(10),
               child: TextField(
-                style: TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white),
                 cursorColor: Colors.white,
                 controller: nameController,
                 decoration: const InputDecoration(
@@ -93,7 +93,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             Container(
               padding: const EdgeInsets.all(10),
               child: TextField(
-                style: TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white),
                 cursorColor: Colors.white,
                 obscureText: true,
                 controller: passwordController,
@@ -108,7 +108,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             Container(
               padding: const EdgeInsets.all(10),
               child: TextField(
-                style: TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white),
                 cursorColor: Colors.white,
                 obscureText: true,
                 controller: passwordController,
@@ -126,7 +126,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 child: ElevatedButton(
                   child: const Text('Sign up'),
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Feed_page()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const FeedPage()));
 
                   },
                 )
@@ -142,7 +142,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   ),
                   onPressed: () {
                     print("alana");
-                    Navigator.push(context,MaterialPageRoute(builder: (context)=> Login_page()));
+                    Navigator.push(context,MaterialPageRoute(builder: (context)=> const LoginPage()));
                     //signup screen
                   },
                 )

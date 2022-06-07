@@ -1,12 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_reddit/Add%20community_page.dart';
-import 'package:flutter_reddit/Login_Page.dart';
-import 'package:flutter_reddit/Profile_page.dart';
+import 'package:flutter_reddit/ui/Add%20community_page.dart';
+import 'package:flutter_reddit/ui/ProfilePage.dart';
 
 
-class Setting_page extends StatelessWidget {
-  const Setting_page({Key? key}) : super(key: key);
+class SettingPage extends StatelessWidget {
+  const SettingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +58,7 @@ class _SettingStatefulState extends State<SettingStateful> {
             padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
             child: ElevatedButton.icon(
                 onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Add_Community()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>AddCommunityPage()));
                 },
                 icon: Icon(
                     Icons.add,

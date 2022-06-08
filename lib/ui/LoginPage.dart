@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_reddit/ui/FeedPage.dart';
+import 'package:flutter_reddit/ui/feed/FeedPage.dart';
 import 'package:flutter_reddit/ui/SignupPage.dart';
 
 class LoginPage extends StatelessWidget {

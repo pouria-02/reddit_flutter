@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_reddit/DataRepository.dart';
+import 'package:flutter_reddit/model/Post.dart';
 import 'package:flutter_reddit/ui/SettingPage.dart';
+import 'package:flutter_reddit/ui/feed/widget/FeedListItem.dart';
 
 class FeedPage extends StatelessWidget {
   const FeedPage({Key? key}) : super(key: key);
@@ -7,6 +10,7 @@ class FeedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         actions: <Widget>[
           IconButton(
@@ -25,38 +29,12 @@ class FeedPage extends StatelessWidget {
         ),
         backgroundColor: Colors.black,
       ),
-      body: const Feed_stateful(),
-    );
-  }
-}
-
-
-class Feed_stateful extends StatefulWidget {
-  const Feed_stateful({Key? key}) : super(key: key);
-
-  @override
-  State<Feed_stateful> createState() => _Feed_statefulState();
-}
-
-class _Feed_statefulState extends State<Feed_stateful> {
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      leading: GestureDetector(
-        behavior: HitTestBehavior.translucent,
-        onTap: () {
-          print("salam");
-        },
-        child: Container(
-          width: 48,
-          height: 48,
-          padding: const EdgeInsets.symmetric(vertical: 4.0),
-          alignment: Alignment.center,
-          child: const CircleAvatar(),
-        ),
-      ),
-      title: const Text('title'),
-      dense: false,
+      body: ListView.builder(
+        itemCount: DataRepository.postList.length,
+        itemBuilder: (context, index) {
+          Post postItem = DataRepository.postList[index];
+          return FeedListItem(postItem: postItem);
+      },)
     );
   }
 }

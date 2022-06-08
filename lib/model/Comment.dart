@@ -1,13 +1,16 @@
+import 'package:flutter_reddit/model/User.dart';
+
 class Comment {
-  late int id;
-  late int userId;
-  late String text;
-  late int postId;
+  int id;
+  User user;
+  String text;
+  int postId;
   DateTime commentTime = DateTime.now();
   int commentLikesCount = 0;
   int commentDislikeCount = 0;
 
-  Comment(this.id, this.text, this.userId, this.postId);
+
+  Comment(this.id, this.user, this.text, this.postId);
 
   void increaseLikeCount() {
     commentLikesCount++;

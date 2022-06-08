@@ -12,12 +12,12 @@ class PostDetailPage extends StatefulWidget {
 
 class _PostDetailPageState extends State<PostDetailPage> {
   List<User> _list = [];
-  Comment comment = Comment(202, "test", 302, 102);
+  // Comment comment = Comment(202, "test", 302, 102);
   TextEditingController testController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    User user = _list.firstWhere((element) => element.id == 100);
+    // User user = _list.firstWhere((element) => element.id == 100);
 
     return Scaffold(
       appBar: AppBar(
@@ -55,7 +55,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
                   // DataRepository.increaseLikeCount(commentId);
                   //DataRepository.
                 },
-                child: Text(comment.commentLikesCount.toString())),
+                child: Text("comment.commentLikesCount.toString()")),//TODO
             TextFormField(
               controller: testController,
             )

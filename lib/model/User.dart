@@ -2,27 +2,37 @@ import 'Community.dart';
 import 'Post.dart';
 
 class User {
-  int id;
-  String userName;
-  String password;
-  String profile;
-  List<Post> postsOfUser;
-  List<Community> communitiesOfUser = [];
+  int _id;
+  String _userName;
+  String _subtitle;
+  String _password;
+  String _profileImageURL;
 
-  User(
-    this.id,
-    this.userName,
-    this.password,
-    this.profile,
-    this.postsOfUser,
-    this.communitiesOfUser,
-  );
+  User(this._id, this._userName, this._subtitle,this._password, this._profileImageURL);
 
-  void addPost(Post p) {
-    postsOfUser.add(p);
+  String get profileImageURL => _profileImageURL;
+
+  set profileImageURL(String value) {
+    _profileImageURL = value;
   }
 
-  void addCommunityOfUser(Community c) {
-    communitiesOfUser.add(c);
+  String get password => _password;
+
+  set password(String value) {
+    _password = value;
+  }
+
+  String get userName => _userName;
+
+  set userName(String value) {
+    _userName = value;
+  }
+
+  int get id => _id;
+
+  String get subtitle => _subtitle;
+
+  set subtitle(String value) {
+    _subtitle = value;
   }
 }

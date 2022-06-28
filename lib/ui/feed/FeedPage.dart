@@ -27,14 +27,17 @@ class FeedPage extends StatelessWidget {
         title: SizedBox(height: 45.0,
         child: Image.asset("asset/images/reddit.png"),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.grey[900],
       ),
-      body: ListView.builder(
-        itemCount: DataRepository.postList.length,
-        itemBuilder: (context, index) {
-          Post postItem = DataRepository.postList[index];
-          return FeedListItem(postItem: postItem);
-      },)
+      body: Padding(
+        padding: const EdgeInsets.only(top: 8.0),
+        child: ListView.builder(
+          itemCount: DataRepository.postList.length,
+          itemBuilder: (context, index) {
+            Post postItem = DataRepository.postList[index];
+            return FeedListItem(postItem: postItem);
+        },),
+      )
     );
   }
 }

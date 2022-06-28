@@ -21,14 +21,16 @@ class _FeedListItemState extends State<FeedListItem> {
     });
 
     return Container(
-      color: Colors.white,
+      color: Colors.grey[900],
       margin: const EdgeInsets.symmetric(vertical: 4),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 8,),
+          const SizedBox(
+            height: 8,
+          ),
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -47,18 +49,27 @@ class _FeedListItemState extends State<FeedListItem> {
                 width: 8,
               ),
               Row(
-
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(widget.postItem.user.userName),
+                      Text(
+                        widget.postItem.user.userName,
+                        style: const TextStyle(
+                          color: Colors.grey,
+                        ),
+                      ),
                       const SizedBox(
                         height: 8,
                       ),
                       Row(
                         children: [
-                          Text(widget.postItem.user.subtitle),
+                          Text(
+                            widget.postItem.user.subtitle,
+                            style: const TextStyle(
+                              color: Colors.grey,
+                            ),
+                          ),
                           const SizedBox(
                             width: 4,
                           ),
@@ -66,7 +77,12 @@ class _FeedListItemState extends State<FeedListItem> {
                           const SizedBox(
                             width: 4,
                           ),
-                          Text(widget.postItem.getPastPublishTime())
+                          Text(
+                            widget.postItem.getPastPublishTime(),
+                            style: const TextStyle(
+                              color: Colors.grey,
+                            ),
+                          )
                         ],
                       ),
                     ],
@@ -78,6 +94,7 @@ class _FeedListItemState extends State<FeedListItem> {
                 onPressed: () {},
                 icon: const Icon(
                   Icons.more_horiz_sharp,
+                  color: Colors.grey,
                 ),
               ),
               const SizedBox(
@@ -85,7 +102,6 @@ class _FeedListItemState extends State<FeedListItem> {
               ),
             ],
           ),
-
           SizedBox(
             width: MediaQuery.of(context).size.width,
             child: Padding(
@@ -93,23 +109,19 @@ class _FeedListItemState extends State<FeedListItem> {
               child: Text(
                 widget.postItem.title,
                 style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
+                    fontWeight: FontWeight.bold, color: Colors.white),
               ),
             ),
           ),
-
           SizedBox(
-            height: 120,
+              height: 120,
               width: MediaQuery.of(context).size.width,
               child: VideoPlayer(_controller)),
-
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-
                 IconButton(
                   onPressed: () {
                     if (widget.postItem.isLiked) {
@@ -128,10 +140,15 @@ class _FeedListItemState extends State<FeedListItem> {
                     widget.postItem.isLiked
                         ? Icons.arrow_circle_up_sharp
                         : Icons.arrow_circle_up_outlined,
+                    color: Colors.grey,
                   ),
                 ),
-                Text(widget.postItem.likeCount.toString()),
-
+                Text(
+                  widget.postItem.likeCount.toString(),
+                  style: const TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
                 IconButton(
                   onPressed: () {
                     if (widget.postItem.isDisliked) {
@@ -150,23 +167,49 @@ class _FeedListItemState extends State<FeedListItem> {
                     widget.postItem.isLiked
                         ? Icons.arrow_circle_down_sharp
                         : Icons.arrow_circle_down_outlined,
+                    color: Colors.grey,
                   ),
                 ),
                 const Spacer(),
-                IconButton(onPressed: () {
-
-                }, icon: const Icon(Icons.mode_comment_outlined)),
-                Text(widget.postItem.commentCount.toString()),
+                IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.mode_comment_outlined,
+                      color: Colors.grey,
+                    )),
+                Text(
+                  widget.postItem.commentCount.toString(),
+                  style: const TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
                 const Spacer(),
-                IconButton(onPressed: () {
-
-                }, icon: const Icon(Icons.upload_sharp)),
-                const Text("Share"),
+                IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.upload_sharp,
+                      color: Colors.grey,
+                    )),
+                const Text(
+                  "Share",
+                  style: TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
                 const Spacer(),
-                IconButton(onPressed: () {
-
-                }, icon: const Icon(Icons.card_giftcard)),
-                const Text("Award"),
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.card_giftcard,
+                    color: Colors.grey,
+                  ),
+                ),
+                const Text(
+                  "Award",
+                  style: TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
               ],
             ),
           ),

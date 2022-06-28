@@ -21,7 +21,7 @@ class _FeedListItemState extends State<FeedListItem> {
     });
 
     return Container(
-      color: Colors.grey[900],
+      color:const Color.fromRGBO(18, 18, 18, .87),
       margin: const EdgeInsets.symmetric(vertical: 4),
       child: Column(
         mainAxisSize: MainAxisSize.min,

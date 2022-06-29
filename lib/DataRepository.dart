@@ -1,8 +1,16 @@
 import 'package:flutter_reddit/model/Comment.dart';
+import 'package:flutter_reddit/model/Community.dart';
 import 'package:flutter_reddit/model/Post.dart';
 import 'package:flutter_reddit/model/User.dart';
 
 class DataRepository {
+  static User myUserData = User(
+    900,
+    "Negin",
+    "developer",
+    "Ab123",
+    "https://picsum.photos/536/354",
+  );
   static List<Comment> commentList = [
     // Comment(202,"nice ", 302, 102),
     // Comment(203," cool ", 303, 103),
@@ -10,6 +18,31 @@ class DataRepository {
     // Comment(205," shit ", 305, 105),
     // Comment(206, "God!",306, 106),
     // Comment(207,":))",307, 107),
+  ];
+
+  static List<Community> communityList = [
+    Community(
+      "developers",
+      "This is a test  community for peoples who love development",
+      [userList[0]],
+      "https://picsum.photos/200/300",
+      24,
+    ),
+    Community(
+      "designers",
+      "This is a test  community for peoples who love design and art",
+      [myUserData],
+      "https://picsum.photos/536/354",
+      81,
+    ),
+    Community(
+      "Nasa",
+      "Nasa official channel in this platform",
+      [myUserData, userList[0]],
+      "https://picsum.photos/536/300",
+      729,
+    ),
+
   ];
 
   static List<User> userList = [

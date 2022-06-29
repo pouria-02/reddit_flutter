@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_reddit/DataRepository.dart';
+import 'package:flutter_reddit/model/Community.dart';
+import 'package:flutter_reddit/model/Post.dart';
 import 'package:flutter_reddit/ui/main/MainPage.dart';
 
 class AddPostPage extends StatefulWidget {
@@ -12,11 +14,13 @@ class AddPostPage extends StatefulWidget {
 class _AddPostPageState extends State<AddPostPage> {
   bool isNextButtonEnable = false;
 
-  FocusNode _titleFocusNode = FocusNode();
-  TextEditingController _titleController = TextEditingController();
+  final FocusNode _titleFocusNode = FocusNode();
+  final TextEditingController _titleController = TextEditingController();
 
-  FocusNode _bodyFocusNode = FocusNode();
-  TextEditingController _bodyController = TextEditingController();
+  final FocusNode _bodyFocusNode = FocusNode();
+  final TextEditingController _bodyController = TextEditingController();
+
+  Community dropDownValue = DataRepository.communityList.first;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +52,28 @@ class _AddPostPageState extends State<AddPostPage> {
                     ),
                     const Spacer(),
                     ElevatedButton(
-                      onPressed: isNextButtonEnable ? () {} : null,
+                      onPressed: isNextButtonEnable
+                          ? () {
+                              Post newPost = Post(
+                                  DataRepository.postList.last.id + 1,
+                                  dropDownValue.communityName,
+                                  _bodyController.text,
+                                  _titleController.text,
+                                  0,
+                                  'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
+                                  DataRepository.myUserData,
+                                  false,
+                                  false,
+                                  DateTime.now(), []);
+                              DataRepository.postList.insert(0, newPost);
+
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder: (context) => const MainPage(),
+                                ),
+                              );
+                            }
+                          : null,
                       child: Text(
                         'Next',
                         style: TextStyle(
@@ -65,7 +90,8 @@ class _AddPostPageState extends State<AddPostPage> {
                           }
                           return null;
                         }),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
                           ),
@@ -84,7 +110,7 @@ class _AddPostPageState extends State<AddPostPage> {
                   children: [
                     ClipOval(
                       child: Image.network(
-                        DataRepository.userList.first.profileImageURL,
+                        dropDownValue.profileCommunityURL,
                         width: 55,
                         height: 55,
                         fit: BoxFit.fill,
@@ -93,20 +119,38 @@ class _AddPostPageState extends State<AddPostPage> {
                     const SizedBox(
                       width: 16,
                     ),
-                    const Text(
-                      'r/vim',
-                      style: TextStyle(fontSize: 17, color: Colors.white),
-                    ),
                     const SizedBox(
                       width: 8,
                     ),
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          size: 30,
-                          color: Colors.grey,
-                        )),
+                    DropdownButton(
+                      value: dropDownValue,
+                      underline: const SizedBox(),
+                      dropdownColor: const Color.fromRGBO(18, 18, 18, .87),
+                      icon: const Icon(
+                        Icons.keyboard_arrow_down_rounded,
+                        size: 30,
+                        color: Colors.grey,
+                      ),
+                      items: DataRepository.communityList.map((item) {
+                        return DropdownMenuItem(
+                          value: item,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16.0, vertical: 8),
+                            child: Text(
+                              item.communityName,
+                              style: const TextStyle(
+                                  fontSize: 17, color: Colors.white),
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (Community? newValue) {
+                        setState(() {
+                          dropDownValue = newValue!;
+                        });
+                      },
+                    ),
                     const Spacer(),
                     TextButton(
                       onPressed: () {},
@@ -118,9 +162,15 @@ class _AddPostPageState extends State<AddPostPage> {
                   ],
                 ),
               ),
-              const SizedBox(height: 4,),
-              const Divider(color: Colors.grey,),
-              SizedBox(height: 24,),
+              const SizedBox(
+                height: 4,
+              ),
+              const Divider(
+                color: Colors.grey,
+              ),
+              const SizedBox(
+                height: 24,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: TextFormField(
@@ -128,13 +178,13 @@ class _AddPostPageState extends State<AddPostPage> {
                   controller: _titleController,
                   validator: _titleValidator,
                   onChanged: (value) {
-                    if(value.length > 3 && _bodyController.text.length > 13) {
+                    if (value.length > 3 && _bodyController.text.length > 13) {
                       setState(() {
                         isNextButtonEnable = true;
                       });
                     } else {
                       setState(() {
-                        isNextButtonEnable = true;
+                        isNextButtonEnable = false;
                       });
                     }
                   },
@@ -142,16 +192,13 @@ class _AddPostPageState extends State<AddPostPage> {
                   onFieldSubmitted: (v) {
                     node.requestFocus(_bodyFocusNode);
                   },
-                  style: const TextStyle(
-                      color: Colors.white, fontSize: 28),
+                  style: const TextStyle(color: Colors.white, fontSize: 28),
                   keyboardType: TextInputType.text,
                   maxLines: 1,
                   decoration: const InputDecoration(
                     border: InputBorder.none,
                     hintText: 'Add a title',
-                    hintStyle:
-                    TextStyle(color: Colors.grey,
-                        fontSize: 28),
+                    hintStyle: TextStyle(color: Colors.grey, fontSize: 28),
                   ),
                 ),
               ),
@@ -162,27 +209,23 @@ class _AddPostPageState extends State<AddPostPage> {
                   controller: _bodyController,
                   validator: _bodyValidator,
                   onChanged: (value) {
-                    if(value.length > 13 && _titleController.text.length > 3) {
+                    if (value.length > 13 && _titleController.text.length > 3) {
                       setState(() {
                         isNextButtonEnable = true;
                       });
-
-                    }
-                    else{
+                    } else {
                       setState(() {
                         isNextButtonEnable = false;
                       });
                     }
                   },
-                  style: const TextStyle(
-                      color: Colors.white, fontSize: 23),
+                  style: const TextStyle(color: Colors.white, fontSize: 23),
                   keyboardType: TextInputType.text,
                   maxLines: 10,
                   decoration: const InputDecoration(
                     border: InputBorder.none,
                     hintText: 'Add body text',
-                    hintStyle:
-                    TextStyle(color: Colors.grey, fontSize: 23),
+                    hintStyle: TextStyle(color: Colors.grey, fontSize: 23),
                   ),
                 ),
               ),
@@ -196,20 +239,18 @@ class _AddPostPageState extends State<AddPostPage> {
   String? _titleValidator(value) {
     if (value == null || value.isEmpty)
       return 'title is required';
-    else if(value.length < 3) {
+    else if (value.length < 3) {
       return "too short";
-    }
-    else
+    } else
       return null;
   }
 
   String? _bodyValidator(value) {
     if (value == null || value.isEmpty)
       return 'body is required';
-    else if(value.length < 13) {
+    else if (value.length < 13) {
       return "too short";
-    }
-    else
+    } else
       return null;
   }
 }

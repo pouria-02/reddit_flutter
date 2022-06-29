@@ -1,11 +1,10 @@
-
 import 'package:flutter_reddit/model/Comment.dart';
 import 'package:flutter_reddit/model/User.dart';
 
 class Post {
   int _id;
   String _communityName;
-  String  _description;
+  String _description;
   String _title;
   int _commentCount;
   String _contentURL;
@@ -13,13 +12,13 @@ class Post {
   bool _isLiked;
   bool _isDisliked;
   DateTime _publishedDate;
-  int _likeCount = 0 ;
+  int _likeCount = 0;
+
   int _disLikeCount = 0;
   List<Comment> _comments;
 
 
-  Post(
-      this._id,
+  Post(this._id,
       this._communityName,
       this._description,
       this._title,
@@ -56,7 +55,9 @@ class Post {
 
   String getPastPublishTime() {
     int nowTimeStamp =
-        DateTime.now().millisecondsSinceEpoch;
+        DateTime
+            .now()
+            .millisecondsSinceEpoch;
     int diff = nowTimeStamp - publishedDate.millisecondsSinceEpoch;
 
     if (diff > 86700000) {
@@ -69,7 +70,11 @@ class Post {
       //min
       return '${(diff ~/ 60000)}m';
     } else {
-      return '${diff ~/ 1000}s';
+      if (diff == 0) {
+        return 'now';
+      } else {
+        return '${diff ~/ 1000}s';
+      }
     }
   }
 

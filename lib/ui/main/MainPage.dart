@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_reddit/DataRepository.dart';
 import 'package:flutter_reddit/ui/SettingPage.dart';
 import 'package:flutter_reddit/ui/addPost/AddPostPage.dart';
 import 'package:flutter_reddit/ui/feed/FeedPage.dart';
@@ -14,6 +15,7 @@ class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
   bool _shouldShowAppBar = true;
   bool _shouldShowBottomNav = true;
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,21 +36,20 @@ class _MainPageState extends State<MainPage> {
             onTap: (index) {
               setState(() {
                 _currentIndex = index;
-                switch(_currentIndex) {
-              case 0:
-                _shouldShowAppBar = true;
-                _shouldShowBottomNav = true;
-                break;
-              case 1:
-                _shouldShowAppBar = false;
-                _shouldShowBottomNav = true;
-                break;
-              case 2:
-                _shouldShowAppBar = false;
-                _shouldShowBottomNav = false;
-                break;
-
-            }
+                switch (_currentIndex) {
+                  case 0:
+                    _shouldShowAppBar = true;
+                    _shouldShowBottomNav = true;
+                    break;
+                  case 1:
+                    _shouldShowAppBar = false;
+                    _shouldShowBottomNav = true;
+                    break;
+                  case 2:
+                    _shouldShowAppBar = false;
+                    _shouldShowBottomNav = false;
+                    break;
+                }
               });
             },
             type: BottomNavigationBarType.fixed,
@@ -67,7 +68,7 @@ class _MainPageState extends State<MainPage> {
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.explore,
-                    size: 35,
+                    size: 32,
                   ),
                   label: 'explorer'),
               BottomNavigationBarItem(
@@ -79,13 +80,13 @@ class _MainPageState extends State<MainPage> {
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.comment,
-                    size: 35,
+                    size: 32,
                   ),
                   label: 'comment'),
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.notifications,
-                    size: 35,
+                    size: 32,
                   ),
                   label: 'notification'),
             ],
@@ -114,23 +115,95 @@ class _MainPageState extends State<MainPage> {
         ? AppBar(
             actions: <Widget>[
               IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SettingPage()));
-                  },
-                  icon: const Icon(
-                    Icons.settings,
-                    color: Colors.white,
-                  ))
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SettingPage()));
+                },
+                color: const Color.fromRGBO(18, 18, 18, .87),
+                icon: const Icon(
+                  Icons.settings,
+                  color: Colors.white,
+                ),
+              ),
             ],
             centerTitle: true,
             title: SizedBox(
               height: 45.0,
-              child: Image.asset("asset/images/reddit.png"),
+              width: MediaQuery.of(context).size.width / 2,
+              child: Stack(
+                children: [
+                  const Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
+                    child: Icon(
+                      Icons.search_sharp,
+                      color: Colors.grey,
+                      size: 24,
+                    ),
+                  ),
+                  TextFormField(
+                    controller: _searchController,
+                    textInputAction: TextInputAction.next,
+                    autovalidateMode: AutovalidateMode.always,
+                    onFieldSubmitted: (v) {
+                      //TODO search among the post list
+                    },
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                    ),
+                    keyboardType: TextInputType.name,
+                    maxLines: 1,
+                    decoration: const InputDecoration(
+                      contentPadding: EdgeInsets.only(left: 40, right: 8),
+                      hintText: 'Search',
+                      hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderSide: BorderSide(color: Colors.grey, width: 2),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             backgroundColor: const Color.fromRGBO(18, 18, 18, .87),
+            leadingWidth: 75,
+            leading: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Stack(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16.0),
+                    child: ClipOval(
+                      child: Image.network(
+                        DataRepository.myUserData.profileImageURL,
+                        width:40,
+                        height:40,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: .1,
+                    right: .1,
+                    child: Container(
+                      height: 12,
+                      width: 12,
+                      decoration: const BoxDecoration(
+                        color: Colors.green,
+                        shape: BoxShape.circle
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
           )
         : null;
   }

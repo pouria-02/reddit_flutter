@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reddit/ui/feed/FeedPage.dart';
+import 'package:flutter_reddit/ui/main/MainPage.dart';
 
 void main() => runApp(const MyApp());
 
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       title: 'Reddit',
-      home: FeedPage(),
+      home: MainPage(),
     );
   }
 }

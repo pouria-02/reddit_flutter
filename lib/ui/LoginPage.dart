@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_reddit/ui/feed/FeedPage.dart';
+import 'package:flutter_reddit/ui/main/MainPage.dart';
 import 'package:flutter_reddit/ui/SignupPage.dart';
 
 class LoginPage extends StatelessWidget {
@@ -99,7 +99,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   child: const Text('Login'),
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => FeedPage()));
+                        MaterialPageRoute(builder: (context) => MainPage()));
                   },
                 )),
             Row(

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_reddit/ui/feed/FeedPage.dart';
+import 'package:flutter_reddit/ui/main/MainPage.dart';
 import 'package:flutter_reddit/ui/LoginPage.dart';
 
 class SignupPage extends StatelessWidget {
@@ -126,7 +126,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 child: ElevatedButton(
                   child: const Text('Sign up'),
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const FeedPage()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const MainPage()));
 
                   },
                 )

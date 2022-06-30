@@ -76,7 +76,7 @@ class _FeedListItemState extends State<FeedListItem> {
                         Row(
                           children: [
                             Text(
-                              widget.postItem.user.subtitle,
+                              widget.postItem.community.communityName,
                               style: const TextStyle(
                                 color: Colors.grey,
                               ),
@@ -189,7 +189,7 @@ class _FeedListItemState extends State<FeedListItem> {
                         color: Colors.grey,
                       )),
                   Text(
-                    widget.postItem.commentCount.toString(),
+                    widget.postItem.comments.length.toString(),
                     style: const TextStyle(
                       color: Colors.grey,
                     ),

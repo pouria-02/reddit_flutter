@@ -55,16 +55,17 @@ class _AddPostPageState extends State<AddPostPage> {
                       onPressed: isNextButtonEnable
                           ? () {
                               Post newPost = Post(
-                                  DataRepository.postList.last.id + 1,
-                                  dropDownValue.communityName,
-                                  _bodyController.text,
-                                  _titleController.text,
-                                  0,
-                                  'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
-                                  DataRepository.myUserData,
-                                  false,
-                                  false,
-                                  DateTime.now(), []);
+                                DataRepository.postList.last.id + 1,
+                                dropDownValue,
+                                _bodyController.text,
+                                _titleController.text,
+                                'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
+                                DataRepository.myUserData,
+                                false,
+                                false,
+                                DateTime.now(),
+                                [],
+                              );
                               DataRepository.postList.insert(0, newPost);
 
                               Navigator.of(context).pushReplacement(

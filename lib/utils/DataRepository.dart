@@ -83,13 +83,12 @@ class DataRepository {
   static List<Post> postList = [
     Post(
       101,
-      "ash",
+      communityList[0],
       "I'm here for fun",
       "test",
-      2,
       "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
       userList[0],
-      true,
+      false,
       false,
       DateTime.utc(2022, 6, 4),
       commentList,

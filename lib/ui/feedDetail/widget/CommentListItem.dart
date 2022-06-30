@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_reddit/model/Comment.dart';
-import 'package:flutter_reddit/model/Post.dart';
 
 class CommentListItem extends StatelessWidget {
   const CommentListItem({
     Key? key,
     required this.currentComment,
-    required this.postItem,
   }) : super(key: key);
 
   final Comment currentComment;
-  final Post postItem;
 
   @override
   Widget build(BuildContext context) {
@@ -53,9 +50,9 @@ class CommentListItem extends StatelessWidget {
               const SizedBox(
                 width: 4,
               ),
-              Text(
-                postItem.getPastPublishTime(),
-                style: const TextStyle(
+              const Text(
+                '5m',
+                style: TextStyle(
                   color: Colors.grey,
                 ),
               ),
@@ -120,9 +117,9 @@ class CommentListItem extends StatelessWidget {
                 ),
                 splashRadius: 22,
               ),
-              Text(
-                postItem.likeCount.toString(),
-                style: const TextStyle(color: Colors.grey, fontSize: 14),
+              const Text(
+                '0',
+                style: TextStyle(color: Colors.grey, fontSize: 14),
               ),
               IconButton(
                 onPressed: () {},

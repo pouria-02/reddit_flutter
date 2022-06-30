@@ -1,12 +1,12 @@
 import 'package:flutter_reddit/model/Comment.dart';
+import 'package:flutter_reddit/model/Community.dart';
 import 'package:flutter_reddit/model/User.dart';
 
 class Post {
   int _id;
-  String _communityName;
+  Community _community;
   String _description;
   String _title;
-  int _commentCount;
   String _contentURL;
   User _user;
   bool _isLiked;
@@ -18,11 +18,11 @@ class Post {
   List<Comment> _comments;
 
 
-  Post(this._id,
-      this._communityName,
+  Post(
+      this._id,
+      this._community,
       this._description,
       this._title,
-      this._commentCount,
       this._contentURL,
       this._user,
       this._isLiked,
@@ -30,11 +30,10 @@ class Post {
       this._publishedDate,
       this._comments);
 
+  Community get community => _community;
 
-  String get communityName => _communityName;
-
-  set communityName(String value) {
-    _communityName = value;
+  set community(Community value) {
+    _community = value;
   }
 
   void increaseLikeCount() {
@@ -88,12 +87,6 @@ class Post {
 
   set title(String value) {
     _title = value;
-  }
-
-  int get commentCount => _commentCount;
-
-  set commentCount(int value) {
-    _commentCount = value;
   }
 
   String get contentURL => _contentURL;

@@ -84,8 +84,8 @@ class _FeedDetailPageState extends State<FeedDetailPage> {
                           Comment currentComment =
                               widget.postItem.comments[index];
                           return CommentListItem(
-                              currentComment: currentComment,
-                              postItem: widget.postItem);
+                            currentComment: currentComment,
+                          );
                         },
                       ),
               ),
@@ -143,7 +143,6 @@ class _FeedDetailPageState extends State<FeedDetailPage> {
                             DataRepository.commentList.insert(0, newComment);
                             _commentController.clear();
                           });
-
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
@@ -168,7 +167,7 @@ class _FeedDetailPageState extends State<FeedDetailPage> {
         ));
   }
 
-  Row upperActionsRow() {
+  Widget upperActionsRow() {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -183,14 +182,16 @@ class _FeedDetailPageState extends State<FeedDetailPage> {
               setState(() {
                 widget.postItem.increaseLikeCount();
                 widget.postItem.isLiked = true;
+                if (widget.postItem.isDisliked) {
+                  widget.postItem.isDisliked = false;
+                  widget.postItem.decreaseDisLikeCount();
+                }
               });
             }
           },
           icon: Icon(
-            widget.postItem.isLiked
-                ? Icons.arrow_circle_up_sharp
-                : Icons.arrow_circle_up_outlined,
-            color: Colors.grey,
+            Icons.arrow_circle_up_sharp,
+            color: widget.postItem.isLiked ? Colors.white : Colors.grey,
           ),
         ),
         Text(
@@ -208,14 +209,16 @@ class _FeedDetailPageState extends State<FeedDetailPage> {
               setState(() {
                 widget.postItem.increaseDisLikeCount();
                 widget.postItem.isDisliked = true;
+                if (widget.postItem.isLiked) {
+                  widget.postItem.isLiked = false;
+                  widget.postItem.decreaseLikeCount();
+                }
               });
             }
           },
           icon: Icon(
-            widget.postItem.isLiked
-                ? Icons.arrow_circle_down_sharp
-                : Icons.arrow_circle_down_outlined,
-            color: Colors.grey,
+            Icons.arrow_circle_down_sharp,
+            color: widget.postItem.isDisliked ? Colors.white : Colors.grey,
           ),
         ),
         const Spacer(),
@@ -226,7 +229,7 @@ class _FeedDetailPageState extends State<FeedDetailPage> {
               color: Colors.grey,
             )),
         Text(
-          widget.postItem.commentCount.toString(),
+          widget.postItem.comments.length.toString(),
           style: const TextStyle(
             color: Colors.grey,
           ),
@@ -258,6 +261,9 @@ class _FeedDetailPageState extends State<FeedDetailPage> {
             color: Colors.grey,
           ),
         ),
+        const SizedBox(
+          width: 16,
+        )
       ],
     );
   }

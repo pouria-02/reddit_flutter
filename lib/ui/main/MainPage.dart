@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reddit/DataRepository.dart';
 import 'package:flutter_reddit/ui/SettingPage.dart';
 import 'package:flutter_reddit/ui/addPost/AddPostPage.dart';
 import 'package:flutter_reddit/ui/feed/FeedPage.dart';
+import 'package:flutter_reddit/utils/DataRepository.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reddit/DataRepository.dart';
 import 'package:flutter_reddit/model/Post.dart';
 import 'package:flutter_reddit/ui/feed/widget/FeedListItem.dart';
+import 'package:flutter_reddit/utils/DataRepository.dart';
 
 class FeedPage extends StatelessWidget {
   const FeedPage({Key? key}) : super(key: key);

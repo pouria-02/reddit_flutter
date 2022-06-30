@@ -8,6 +8,7 @@ class DataRepository {
     900,
     "Negin",
     "developer",
+    "neg.qorbani@gmail.com",
     "Ab123",
     "https://picsum.photos/536/354",
   );
@@ -73,6 +74,7 @@ class DataRepository {
       901,
       "ash",
       "programmer",
+      "ash@hotmail.com",
       "1234",
       "https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img,w_1536/https://www.soldevelo.com/blog/wp-content/uploads/What-makes-a-great-programmer-banner-1536x1024-1.jpeg",
     ),

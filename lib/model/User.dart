@@ -1,14 +1,19 @@
-import 'Community.dart';
-import 'Post.dart';
-
 class User {
   int _id;
   String _userName;
   String _subtitle;
+  String _email;
   String _password;
   String _profileImageURL;
 
-  User(this._id, this._userName, this._subtitle,this._password, this._profileImageURL);
+  User(this._id, this._userName, this._subtitle, this._email, this._password,
+      this._profileImageURL);
+
+  String get email => _email;
+
+  set email(String value) {
+    _email = value;
+  }
 
   String get profileImageURL => _profileImageURL;
 

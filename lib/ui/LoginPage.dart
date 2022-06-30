@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_reddit/ui/main/MainPage.dart';
 import 'package:flutter_reddit/ui/SignupPage.dart';
+import 'package:flutter_reddit/ui/main/MainPage.dart';
+import 'package:flutter_reddit/utils/DataRepository.dart';
+import 'package:flutter_reddit/utils/PrefManager.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -29,14 +31,15 @@ class MyStatefulWidget extends StatefulWidget {
 }
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(10),
-        child: ListView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
                 alignment: Alignment.center,
@@ -58,21 +61,21 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             Container(
               padding: const EdgeInsets.all(10),
               child: TextField(
-                style: TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white),
                 cursorColor: Colors.white,
-                controller: nameController,
+                controller: emailController,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.purple)),
-                    labelText: 'Username',
+                    labelText: 'Email',
                     labelStyle: TextStyle(color: Colors.white)),
               ),
             ),
             Container(
               padding: const EdgeInsets.all(10),
               child: TextField(
-                style: TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white),
                 cursorColor: Colors.white,
                 obscureText: true,
                 controller: passwordController,
@@ -94,12 +97,32 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             ),
             Container(
                 height: 50,
+                width: MediaQuery.of(context).size.width,
                 padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                 child: ElevatedButton(
                   child: const Text('Login'),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MainPage()));
+                    String email = emailController.text;
+                    String password = passwordController.text;
+
+                    if (DataRepository.myUserData.email == email &&
+                        DataRepository.myUserData.password == password) {
+                      PrefManager().setUserLogin(true);
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MainPage(),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                            'email or password is wrong',
+                          ),
+                        ),
+                      );
+                    }
                   },
                 )),
             Row(
@@ -114,8 +137,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     style: TextStyle(fontSize: 20),
                   ),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SignupPage()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignupPage()));
                     //signup screen
                   },
                 )

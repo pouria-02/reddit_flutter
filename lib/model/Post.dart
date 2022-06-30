@@ -8,6 +8,7 @@ class Post {
   String _description;
   String _title;
   String _contentURL;
+  String _thumbnailURL;
   User _user;
   bool _isLiked;
   bool _isDisliked;
@@ -17,18 +18,20 @@ class Post {
   int _disLikeCount = 0;
   List<Comment> _comments;
 
-
   Post(
       this._id,
       this._community,
       this._description,
       this._title,
       this._contentURL,
+      this._thumbnailURL,
       this._user,
       this._isLiked,
       this._isDisliked,
       this._publishedDate,
       this._comments);
+
+  String get thumbnailURL => _thumbnailURL;
 
   Community get community => _community;
 

@@ -87,6 +87,7 @@ class DataRepository {
       "I'm here for fun",
       "test",
       "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+      'https://numpaints.com/wp-content/uploads/2022/03/Big-Buck-Bunny-paint-by-number.jpg',
       userList[0],
       false,
       false,

@@ -13,13 +13,14 @@ class FeedListItem extends StatefulWidget {
 }
 
 class _FeedListItemState extends State<FeedListItem> {
+  GlobalKey key = GlobalKey();
+  bool _isVideoPlaying = false;
+  late VideoPlayerController _controller;
+
   @override
   Widget build(BuildContext context) {
-    VideoPlayerController _controller =
-        VideoPlayerController.asset(widget.postItem.contentURL);
-    setState(() {
-      _controller.play();
-    });
+    _controller = VideoPlayerController.asset(widget.postItem.contentURL);
+    _controller.play();
 
     return InkWell(
       onTap: () {
@@ -125,9 +126,54 @@ class _FeedListItemState extends State<FeedListItem> {
               ),
             ),
             SizedBox(
-                height: 120,
-                width: MediaQuery.of(context).size.width,
-                child: VideoPlayer(_controller)),
+              height: 250,
+              width: MediaQuery.of(context).size.width,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _isVideoPlaying = true;
+                    _controller.play();
+                  });
+                },
+                child: Stack(
+                  children: [
+                    Visibility(
+                      visible: !_isVideoPlaying,
+                      child: Image.network(
+                        widget.postItem.thumbnailURL,
+                        height: 250,
+                        width: MediaQuery.of(context).size.width,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    Visibility(
+                      visible: !_isVideoPlaying,
+                      child: const Positioned(
+                        top: 1,
+                        bottom: 1,
+                        right: 1,
+                        left: 1,
+                        child: IconButton(
+                          onPressed: null,
+                          icon: Icon(
+                            Icons.play_arrow_rounded,
+                            color: Colors.white,
+                            size: 125,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Visibility(
+                      visible: _isVideoPlaying,
+                      child: VideoPlayer(
+                        _controller,
+                        key: key,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Row(

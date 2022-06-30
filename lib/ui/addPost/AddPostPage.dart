@@ -60,6 +60,7 @@ class _AddPostPageState extends State<AddPostPage> {
                                 _bodyController.text,
                                 _titleController.text,
                                 'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
+                                'https://www.dragon1.com/images/Big_Buck_Bunny.jpg',
                                 DataRepository.myUserData,
                                 false,
                                 false,

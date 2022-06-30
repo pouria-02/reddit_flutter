@@ -12,12 +12,36 @@ class DataRepository {
     "https://picsum.photos/536/354",
   );
   static List<Comment> commentList = [
-    // Comment(202,"nice ", 302, 102),
-    // Comment(203," cool ", 303, 103),
-    // Comment(204," wow ", 304, 104),
-    // Comment(205," shit ", 305, 105),
-    // Comment(206, "God!",306, 106),
-    // Comment(207,":))",307, 107),
+    Comment(
+      201,
+      DataRepository.myUserData,
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ",
+      302,
+    ),
+    Comment(
+      202,
+      DataRepository.myUserData,
+      "nice ",
+      302,
+    ),
+    Comment(
+      203,
+      DataRepository.myUserData,
+      "wow ",
+      303,
+    ),
+    Comment(
+      204,
+      DataRepository.myUserData,
+      "shit ",
+      303,
+    ),
+    Comment(
+      204,
+      DataRepository.myUserData,
+      "God! ",
+      303,
+    ),
   ];
 
   static List<Community> communityList = [
@@ -42,7 +66,6 @@ class DataRepository {
       "https://picsum.photos/536/300",
       729,
     ),
-
   ];
 
   static List<User> userList = [
@@ -67,7 +90,7 @@ class DataRepository {
       true,
       false,
       DateTime.utc(2022, 6, 4),
-      [],
+      commentList,
     )
   ];
 

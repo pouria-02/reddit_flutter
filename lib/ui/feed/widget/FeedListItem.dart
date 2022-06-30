@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_reddit/model/Post.dart';
+import 'package:flutter_reddit/ui/feedDetail/FeedDetailPage.dart';
 import 'package:video_player/video_player.dart';
 
 class FeedListItem extends StatefulWidget {
@@ -20,200 +21,211 @@ class _FeedListItemState extends State<FeedListItem> {
       _controller.play();
     });
 
-    return Container(
-      color:const Color.fromRGBO(18, 18, 18, .87),
-      margin: const EdgeInsets.symmetric(vertical: 4),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 8,
-          ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const SizedBox(
-                width: 16,
-              ),
-              ClipOval(
-                child: Image.network(
-                  widget.postItem.user.profileImageURL,
-                  width: 55,
-                  height: 55,
-                  fit: BoxFit.fill,
-                ),
-              ),
-              const SizedBox(
-                width: 8,
-              ),
-              Row(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        widget.postItem.user.userName,
-                        style: const TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            widget.postItem.user.subtitle,
-                            style: const TextStyle(
-                              color: Colors.grey,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 4,
-                          ),
-                          const Text("."),
-                          const SizedBox(
-                            width: 4,
-                          ),
-                          Text(
-                            widget.postItem.getPastPublishTime(),
-                            style: const TextStyle(
-                              color: Colors.grey,
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              const Spacer(),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.more_horiz_sharp,
-                  color: Colors.grey,
-                ),
-              ),
-              const SizedBox(
-                width: 16,
-              ),
-            ],
-          ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                widget.postItem.title,
-                style: const TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.white),
-              ),
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => FeedDetailPage(
+              postItem: widget.postItem,
             ),
           ),
-          SizedBox(
-              height: 120,
-              width: MediaQuery.of(context).size.width,
-              child: VideoPlayer(_controller)),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
+        );
+      },
+      child: Container(
+        color: const Color.fromRGBO(18, 18, 18, .87),
+        margin: const EdgeInsets.symmetric(vertical: 4),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+              height: 8,
+            ),
+            Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                IconButton(
-                  onPressed: () {
-                    if (widget.postItem.isLiked) {
-                      setState(() {
-                        widget.postItem.decreaseLikeCount();
-                        widget.postItem.isLiked = false;
-                      });
-                    } else {
-                      setState(() {
-                        widget.postItem.increaseLikeCount();
-                        widget.postItem.isLiked = true;
-                      });
-                    }
-                  },
-                  icon: Icon(
-                    widget.postItem.isLiked
-                        ? Icons.arrow_circle_up_sharp
-                        : Icons.arrow_circle_up_outlined,
-                    color: Colors.grey,
+                const SizedBox(
+                  width: 16,
+                ),
+                ClipOval(
+                  child: Image.network(
+                    widget.postItem.user.profileImageURL,
+                    width: 55,
+                    height: 55,
+                    fit: BoxFit.fill,
                   ),
                 ),
-                Text(
-                  widget.postItem.likeCount.toString(),
-                  style: const TextStyle(
-                    color: Colors.grey,
-                  ),
+                const SizedBox(
+                  width: 8,
                 ),
-                IconButton(
-                  onPressed: () {
-                    if (widget.postItem.isDisliked) {
-                      setState(() {
-                        widget.postItem.decreaseDisLikeCount();
-                        widget.postItem.isDisliked = false;
-                      });
-                    } else {
-                      setState(() {
-                        widget.postItem.increaseDisLikeCount();
-                        widget.postItem.isDisliked = true;
-                      });
-                    }
-                  },
-                  icon: Icon(
-                    widget.postItem.isLiked
-                        ? Icons.arrow_circle_down_sharp
-                        : Icons.arrow_circle_down_outlined,
-                    color: Colors.grey,
-                  ),
-                ),
-                const Spacer(),
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.mode_comment_outlined,
-                      color: Colors.grey,
-                    )),
-                Text(
-                  widget.postItem.commentCount.toString(),
-                  style: const TextStyle(
-                    color: Colors.grey,
-                  ),
-                ),
-                const Spacer(),
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.upload_sharp,
-                      color: Colors.grey,
-                    )),
-                const Text(
-                  "Share",
-                  style: TextStyle(
-                    color: Colors.grey,
-                  ),
+                Row(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.postItem.user.userName,
+                          style: const TextStyle(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              widget.postItem.user.subtitle,
+                              style: const TextStyle(
+                                color: Colors.grey,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 4,
+                            ),
+                            const Text("."),
+                            const SizedBox(
+                              width: 4,
+                            ),
+                            Text(
+                              widget.postItem.getPastPublishTime(),
+                              style: const TextStyle(
+                                color: Colors.grey,
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
                 const Spacer(),
                 IconButton(
                   onPressed: () {},
                   icon: const Icon(
-                    Icons.card_giftcard,
+                    Icons.more_horiz_sharp,
                     color: Colors.grey,
                   ),
                 ),
-                const Text(
-                  "Award",
-                  style: TextStyle(
-                    color: Colors.grey,
-                  ),
+                const SizedBox(
+                  width: 16,
                 ),
               ],
             ),
-          ),
-        ],
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  widget.postItem.title,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.white),
+                ),
+              ),
+            ),
+            SizedBox(
+                height: 120,
+                width: MediaQuery.of(context).size.width,
+                child: VideoPlayer(_controller)),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      if (widget.postItem.isLiked) {
+                        setState(() {
+                          widget.postItem.decreaseLikeCount();
+                          widget.postItem.isLiked = false;
+                        });
+                      } else {
+                        setState(() {
+                          widget.postItem.increaseLikeCount();
+                          widget.postItem.isLiked = true;
+                        });
+                      }
+                    },
+                    icon: Icon(
+                      widget.postItem.isLiked
+                          ? Icons.arrow_circle_up_sharp
+                          : Icons.arrow_circle_up_outlined,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  Text(
+                    widget.postItem.likeCount.toString(),
+                    style: const TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      if (widget.postItem.isDisliked) {
+                        setState(() {
+                          widget.postItem.decreaseDisLikeCount();
+                          widget.postItem.isDisliked = false;
+                        });
+                      } else {
+                        setState(() {
+                          widget.postItem.increaseDisLikeCount();
+                          widget.postItem.isDisliked = true;
+                        });
+                      }
+                    },
+                    icon: Icon(
+                      widget.postItem.isLiked
+                          ? Icons.arrow_circle_down_sharp
+                          : Icons.arrow_circle_down_outlined,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  const Spacer(),
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.mode_comment_outlined,
+                        color: Colors.grey,
+                      )),
+                  Text(
+                    widget.postItem.commentCount.toString(),
+                    style: const TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                  const Spacer(),
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.upload_sharp,
+                        color: Colors.grey,
+                      )),
+                  const Text(
+                    "Share",
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                  const Spacer(),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.card_giftcard,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  const Text(
+                    "Award",
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

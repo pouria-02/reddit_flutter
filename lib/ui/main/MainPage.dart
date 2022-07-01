@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_reddit/ui/SettingPage.dart';
 import 'package:flutter_reddit/ui/addPost/AddPostPage.dart';
+import 'package:flutter_reddit/ui/communityPage/CommunityPage.dart';
 import 'package:flutter_reddit/ui/feed/FeedPage.dart';
 import 'package:flutter_reddit/utils/DataRepository.dart';
 
@@ -99,7 +100,7 @@ class _MainPageState extends State<MainPage> {
       case 0:
         return const FeedPage();
       case 1:
-        return const FeedPage();
+        return const CommunityPage();
       case 2:
         return const AddPostPage();
       case 3:
@@ -117,9 +118,11 @@ class _MainPageState extends State<MainPage> {
               IconButton(
                 onPressed: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SettingPage()));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SettingPage(),
+                    ),
+                  );
                 },
                 color: const Color.fromRGBO(18, 18, 18, .87),
                 icon: const Icon(
@@ -145,8 +148,7 @@ class _MainPageState extends State<MainPage> {
                   ),
                   TextFormField(
                     controller: _searchController,
-                    textInputAction: TextInputAction.next,
-                    autovalidateMode: AutovalidateMode.always,
+                    textInputAction: TextInputAction.done,
                     onFieldSubmitted: (v) {
                       //TODO search among the post list
                     },
@@ -183,8 +185,8 @@ class _MainPageState extends State<MainPage> {
                     child: ClipOval(
                       child: Image.network(
                         DataRepository.myUserData.profileImageURL,
-                        width:40,
-                        height:40,
+                        width: 40,
+                        height: 40,
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -197,7 +199,7 @@ class _MainPageState extends State<MainPage> {
                       width: 12,
                       decoration: const BoxDecoration(
                         color: Colors.green,
-                        shape: BoxShape.circle
+                        shape: BoxShape.circle,
                       ),
                     ),
                   )

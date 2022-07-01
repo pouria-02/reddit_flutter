@@ -178,7 +178,6 @@ class _AddPostPageState extends State<AddPostPage> {
                 child: TextFormField(
                   focusNode: _titleFocusNode,
                   controller: _titleController,
-                  validator: _titleValidator,
                   onChanged: (value) {
                     if (value.length > 3 && _bodyController.text.length > 13) {
                       setState(() {
@@ -209,7 +208,6 @@ class _AddPostPageState extends State<AddPostPage> {
                 child: TextFormField(
                   focusNode: _bodyFocusNode,
                   controller: _bodyController,
-                  validator: _bodyValidator,
                   onChanged: (value) {
                     if (value.length > 13 && _titleController.text.length > 3) {
                       setState(() {
@@ -236,23 +234,5 @@ class _AddPostPageState extends State<AddPostPage> {
         ),
       ),
     );
-  }
-
-  String? _titleValidator(value) {
-    if (value == null || value.isEmpty)
-      return 'title is required';
-    else if (value.length < 3) {
-      return "too short";
-    } else
-      return null;
-  }
-
-  String? _bodyValidator(value) {
-    if (value == null || value.isEmpty)
-      return 'body is required';
-    else if (value.length < 13) {
-      return "too short";
-    } else
-      return null;
   }
 }

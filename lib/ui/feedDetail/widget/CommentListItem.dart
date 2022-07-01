@@ -29,8 +29,8 @@ class CommentListItem extends StatelessWidget {
               ClipOval(
                 child: Image.network(
                   currentComment.user.profileImageURL,
-                  width: 55,
-                  height: 55,
+                  width: 45,
+                  height: 45,
                   fit: BoxFit.fill,
                 ),
               ),

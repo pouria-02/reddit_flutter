@@ -73,7 +73,7 @@ class _FeedDetailPageState extends State<FeedDetailPage> {
                 height: 24,
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.width - 80,
+                height: MediaQuery.of(context).size.height / 2 - 80,
                 child: widget.postItem.comments.isEmpty
                     ? const Center(
                         child: Text('Be the first one to comment'),

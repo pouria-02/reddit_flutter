@@ -12,6 +12,7 @@ class DataRepository {
     "Ab123",
     "https://picsum.photos/536/354",
   );
+
   static List<Comment> commentList = [
     Comment(
       201,

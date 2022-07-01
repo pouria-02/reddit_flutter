@@ -1,23 +1,14 @@
-import 'dart:ffi';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_reddit/ui/ChangeEmailPage.dart';
 import 'package:flutter_reddit/ui/ChangePasswordPage.dart';
 import 'package:flutter_reddit/ui/ChangeUsernamePage.dart';
-import 'package:flutter_reddit/model/Post.dart';
 
 import '../model/User.dart';
 
+class ProfilePage extends StatelessWidget {
+  final User users;
 
-class Profile_page extends StatelessWidget {
-
-  late List<User> users;
-
-
-  Profile_page({required List<User> users}){
-    this.users=users;
-  }
+  const ProfilePage({Key? key, required this.users}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,21 +22,19 @@ class Profile_page extends StatelessWidget {
         ),
         backgroundColor: Colors.black,
       ),
-      body: Profile_stateful(),
+      body: const Body(),
     );
   }
 }
 
-
-class Profile_stateful extends StatefulWidget {
-
-  const Profile_stateful({Key? key}) : super(key: key);
+class Body extends StatefulWidget {
+  const Body({Key? key}) : super(key: key);
 
   @override
-  State<Profile_stateful> createState() => _Profile_statefulState();
+  State<Body> createState() => _BodyState();
 }
 
-class _Profile_statefulState extends State<Profile_stateful> {
+class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -55,39 +44,52 @@ class _Profile_statefulState extends State<Profile_stateful> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
+                height: 50.0,
+                //color: Colors.green,
+                child: const Text(
+                  "Username:                                pouria                                                                                            ",
+                  style: TextStyle(color: Colors.white),
+                )),
+            Container(
               height: 50.0,
-              //color: Colors.green,
-              child: Text("Username:                                pouria                                                                                            ",style: TextStyle(color: Colors.white),)
-
+              child: const Text(
+                "Email:                                   p.adabi1381@gmail.com                                                                             ",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
             Container(
               height: 50.0,
-              child: Text("Email:                                   p.adabi1381@gmail.com                                                                             ",style: TextStyle(color: Colors.white),),
-            ),
-            Container(
-              height: 50.0,
-              child: Text("Password:                                 Pouria.adabi1381                                                                                 ",style: TextStyle(color: Colors.white),),
+              child: const Text(
+                "Password:                                 Pouria.adabi1381                                                                                 ",
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ],
         ),
-            TextButton(
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ChangeUsernamePage()));
-                },
-                child: const Text("Change username")
-            ),
-            TextButton(
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ChangeEmailPage()));
-                },
-                child: const Text("Change email")
-            ),
-            TextButton(
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ChangePasswordPage()));
-                },
-                child: const Text("Change password")
-            )
+        TextButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ChangeUsernamePage()));
+            },
+            child: const Text("Change username")),
+        TextButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ChangeEmailPage()));
+            },
+            child: const Text("Change email")),
+        TextButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ChangePasswordPage()));
+            },
+            child: const Text("Change password"))
       ],
     );
   }

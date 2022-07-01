@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reddit/ui/SettingPage.dart';
+import 'package:flutter_reddit/ui/Add%20community_page.dart';
+import 'package:flutter_reddit/ui/LoginPage.dart';
+import 'package:flutter_reddit/ui/ProfilePage.dart';
 import 'package:flutter_reddit/ui/addPost/AddPostPage.dart';
 import 'package:flutter_reddit/ui/communityPage/CommunityPage.dart';
 import 'package:flutter_reddit/ui/feed/FeedPage.dart';
@@ -22,12 +24,157 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.black,
+        drawer: myDrawer(context),
         bottomNavigationBar: bottomNav(),
         appBar: myAppBar(context),
         body: Padding(
           padding: const EdgeInsets.only(top: 8.0),
           child: choosePage(),
         ));
+  }
+
+  Drawer myDrawer(BuildContext context) {
+    var prefManager = PrefManager();
+    return Drawer(
+      backgroundColor: const Color.fromRGBO(18, 18, 18, .87),
+      child: Column(
+        children: <Widget>[
+          const SizedBox(
+            height: 48,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 16.0),
+                  child: ClipOval(
+                    child: Image.network(
+                      prefManager.getUser()!.profileImageURL,
+                      width: 85,
+                      height: 85,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 2,
+                  right: 2,
+                  child: Container(
+                    height: 20,
+                    width: 20,
+                    decoration: const BoxDecoration(
+                      color: Colors.green,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          Text(
+            prefManager.getUser()!.userName,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 24,
+            ),
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          Text(
+            prefManager.getUser()!.subtitle,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+            ),
+          ),
+          Expanded(
+            child: Container(
+              margin: const EdgeInsets.only(top: 24),
+              padding: const EdgeInsets.all(16),
+              color: Colors.black,
+              child: Column(
+                children: [
+                  ListTile(
+                    title: const Text(
+                      'Profile',
+                      style: TextStyle(color: Colors.white, fontSize: 17),
+                    ),
+                    leading: const Icon(
+                      Icons.person,
+                      color: Colors.white,
+                      size: 24,
+                    ),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => ProfilePage(
+                            users: prefManager.getUser()!,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text(
+                      'Add Community',
+                      style: TextStyle(color: Colors.white, fontSize: 17),
+                    ),
+                    leading: const Icon(
+                      Icons.add,
+                      color: Colors.white,
+                      size: 24,
+                    ),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const AddCommunityPage(),
+                        ),
+                      );
+                    },
+                  ),
+                  const ListTile(
+                    title: const Text(
+                      'Saved Post',
+                      style: TextStyle(color: Colors.white, fontSize: 17),
+                    ),
+                    leading: const Icon(
+                      Icons.bookmark,
+                      color: Colors.white,
+                      size: 24,
+                    ),
+                  ),
+                  ListTile(
+                    title: const Text(
+                      'SignOut',
+                      style: const TextStyle(color: Colors.white, fontSize: 17),
+                    ),
+                    leading: const Icon(
+                      Icons.exit_to_app,
+                      color: Colors.white,
+                      size: 24,
+                    ),
+                    onTap: () {
+                      prefManager.setUserLogin(false);
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginPage(),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   BottomNavigationBar? bottomNav() {
@@ -114,27 +261,10 @@ class _MainPageState extends State<MainPage> {
   AppBar? myAppBar(BuildContext context) {
     return _shouldShowAppBar
         ? AppBar(
-            actions: <Widget>[
-              IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SettingPage(),
-                    ),
-                  );
-                },
-                color: const Color.fromRGBO(18, 18, 18, .87),
-                icon: const Icon(
-                  Icons.settings,
-                  color: Colors.white,
-                ),
-              ),
-            ],
             centerTitle: true,
             title: SizedBox(
               height: 45.0,
-              width: MediaQuery.of(context).size.width / 2,
+              width: MediaQuery.of(context).size.width - 150,
               child: Stack(
                 children: [
                   const Padding(
@@ -175,37 +305,6 @@ class _MainPageState extends State<MainPage> {
               ),
             ),
             backgroundColor: const Color.fromRGBO(18, 18, 18, .87),
-            leadingWidth: 75,
-            leading: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
-                    child: ClipOval(
-                      child: Image.network(
-                        PrefManager().getUser()!.profileImageURL,
-                        width: 40,
-                        height: 40,
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: .1,
-                    right: .1,
-                    child: Container(
-                      height: 12,
-                      width: 12,
-                      decoration: const BoxDecoration(
-                        color: Colors.green,
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
           )
         : null;
   }

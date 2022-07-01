@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_reddit/ui/LoginPage.dart';
+import 'package:flutter_reddit/ui/login/LoginPage.dart';
 import 'package:flutter_reddit/ui/main/MainPage.dart';
 import 'package:flutter_reddit/utils/PrefManager.dart';
 

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_reddit/ui/Add%20community_page.dart';
-import 'package:flutter_reddit/ui/LoginPage.dart';
-import 'package:flutter_reddit/ui/ProfilePage.dart';
 import 'package:flutter_reddit/ui/addPost/AddPostPage.dart';
 import 'package:flutter_reddit/ui/communityPage/CommunityPage.dart';
 import 'package:flutter_reddit/ui/feed/FeedPage.dart';
+import 'package:flutter_reddit/ui/login/LoginPage.dart';
+import 'package:flutter_reddit/ui/profile/ProfilePage.dart';
 import 'package:flutter_reddit/utils/PrefManager.dart';
 
 class MainPage extends StatefulWidget {
@@ -112,9 +112,7 @@ class _MainPageState extends State<MainPage> {
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ProfilePage(
-                            users: prefManager.getUser()!,
-                          ),
+                          builder: (context) => const ProfilePage(),
                         ),
                       );
                     },

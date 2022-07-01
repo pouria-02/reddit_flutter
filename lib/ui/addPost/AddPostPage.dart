@@ -3,6 +3,7 @@ import 'package:flutter_reddit/model/Community.dart';
 import 'package:flutter_reddit/model/Post.dart';
 import 'package:flutter_reddit/ui/main/MainPage.dart';
 import 'package:flutter_reddit/utils/DataRepository.dart';
+import 'package:flutter_reddit/utils/PrefManager.dart';
 
 class AddPostPage extends StatefulWidget {
   const AddPostPage({Key? key}) : super(key: key);
@@ -61,7 +62,7 @@ class _AddPostPageState extends State<AddPostPage> {
                                 _titleController.text,
                                 'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
                                 'https://www.dragon1.com/images/Big_Buck_Bunny.jpg',
-                                DataRepository.myUserData,
+                                PrefManager().getUser()!,
                                 false,
                                 false,
                                 DateTime.now(),

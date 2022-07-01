@@ -2,45 +2,37 @@ import 'package:flutter_reddit/model/Comment.dart';
 import 'package:flutter_reddit/model/Community.dart';
 import 'package:flutter_reddit/model/Post.dart';
 import 'package:flutter_reddit/model/User.dart';
+import 'package:flutter_reddit/utils/PrefManager.dart';
 
 class DataRepository {
-  static User myUserData = User(
-    900,
-    "Negin",
-    "developer",
-    "neg.qorbani@gmail.com",
-    "Ab123",
-    "https://picsum.photos/536/354",
-  );
-
   static List<Comment> commentList = [
     Comment(
       201,
-      DataRepository.myUserData,
+      PrefManager().getUser()!,
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ",
       302,
     ),
     Comment(
       202,
-      DataRepository.myUserData,
+      PrefManager().getUser()!,
       "nice ",
       302,
     ),
     Comment(
       203,
-      DataRepository.myUserData,
+      PrefManager().getUser()!,
       "wow ",
       303,
     ),
     Comment(
       204,
-      DataRepository.myUserData,
+      PrefManager().getUser()!,
       "shit ",
       303,
     ),
     Comment(
       204,
-      DataRepository.myUserData,
+      PrefManager().getUser()!,
       "God! ",
       303,
     ),
@@ -57,14 +49,14 @@ class DataRepository {
     Community(
       "designers",
       "This is a test  community for peoples who love design and art",
-      [myUserData],
+      [PrefManager().getUser()!],
       "https://picsum.photos/536/354",
       81,
     ),
     Community(
       "Nasa",
       "Nasa official channel in this platform",
-      [myUserData, userList[0]],
+      [PrefManager().getUser()!, userList[0]],
       "https://picsum.photos/536/300",
       729,
     ),

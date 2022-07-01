@@ -3,6 +3,7 @@ import 'package:flutter_reddit/model/Comment.dart';
 import 'package:flutter_reddit/model/Post.dart';
 import 'package:flutter_reddit/ui/feedDetail/widget/CommentListItem.dart';
 import 'package:flutter_reddit/utils/DataRepository.dart';
+import 'package:flutter_reddit/utils/PrefManager.dart';
 
 class FeedDetailPage extends StatefulWidget {
   const FeedDetailPage({Key? key, required this.postItem}) : super(key: key);
@@ -135,7 +136,7 @@ class _FeedDetailPageState extends State<FeedDetailPage> {
                         if (commentText.length > 2) {
                           Comment newComment = Comment(
                             DataRepository.commentList.last.id + 1,
-                            DataRepository.myUserData,
+                            PrefManager().getUser()!,
                             commentText,
                             widget.postItem.id,
                           );

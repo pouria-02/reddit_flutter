@@ -3,7 +3,7 @@ import 'package:flutter_reddit/ui/SettingPage.dart';
 import 'package:flutter_reddit/ui/addPost/AddPostPage.dart';
 import 'package:flutter_reddit/ui/communityPage/CommunityPage.dart';
 import 'package:flutter_reddit/ui/feed/FeedPage.dart';
-import 'package:flutter_reddit/utils/DataRepository.dart';
+import 'package:flutter_reddit/utils/PrefManager.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -184,7 +184,7 @@ class _MainPageState extends State<MainPage> {
                     padding: const EdgeInsets.only(left: 16.0),
                     child: ClipOval(
                       child: Image.network(
-                        DataRepository.myUserData.profileImageURL,
+                        PrefManager().getUser()!.profileImageURL,
                         width: 40,
                         height: 40,
                         fit: BoxFit.fill,

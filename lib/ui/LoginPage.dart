@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_reddit/ui/SignupPage.dart';
+import 'package:flutter_reddit/model/User.dart';
 import 'package:flutter_reddit/ui/main/MainPage.dart';
-import 'package:flutter_reddit/utils/DataRepository.dart';
+import 'package:flutter_reddit/ui/signup/SignupPage.dart';
 import 'package:flutter_reddit/utils/PrefManager.dart';
 
 class LoginPage extends StatelessWidget {
@@ -104,9 +104,15 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   onPressed: () {
                     String email = emailController.text;
                     String password = passwordController.text;
-
-                    if (DataRepository.myUserData.email == email &&
-                        DataRepository.myUserData.password == password) {
+                    User? myUserData = PrefManager().getUser();
+                    if (myUserData == null) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('You have not registered yet.'),
+                        ),
+                      );
+                    } else if (myUserData.email == email &&
+                        myUserData.password == password) {
                       PrefManager().setUserLogin(true);
                       Navigator.pushReplacement(
                         context,
